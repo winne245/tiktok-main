@@ -1,0 +1,20 @@
+.menu {
+  width: 224px;
+
+  .menu-inner {
+    padding-bottom: 8px;
+
+    .menu-item {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      margin-left: 0px;
+      padding: 11px 16px;
+
+      &:hover {
+        border-radius: 0;
+        background-color: rgba(22, 24, 35, 0.03);
+      }
+    }
+  }
+}

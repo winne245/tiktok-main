@@ -1,0 +1,107 @@
+.wrapper {
+  --search-border-radius: 92px;
+  --search-height: 46px;
+  --search-top-space: 9px;
+  --search-btn-width: 52px;
+
+  height: var(--default-layout-header-hight, 60px);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px;
+
+  .inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-title {
+    height: 30px;
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.093px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
+  }
+
+  .search,
+  .search-result {
+    width: 516px;
+  }
+
+  .search {
+    position: relative;
+    height: var(--search-height);
+    padding-left: 16px;
+    display: flex;
+    background-color: rgba(22, 24, 35, 0.06);
+    border-radius: var(--search-border-radius);
+    border: 1px solid transparent;
+
+    input {
+      flex: 1;
+      height: 100%;
+      color: var(--black);
+      font-size: 1.6rem;
+      caret-color: var(--primary);
+      background-color: transparent;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+      color: rgba(22, 24, 35, 0.75);
+    }
+
+    input:hover ~ .search-btn {
+      color: rgba(22, 24, 35, 0.75);
+      background-color: rgba(22, 24, 35, 0.03);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: var(--search-top-space);
+      right: var(--search-btn-width);
+      width: 1px;
+      height: calc(var(--search-height) - var(--search-top-space) * 2);
+      background-color: rgba(22, 24, 35, 0.12);
+    }
+
+    &:hover,
+    &:focus-within {
+      border-color: rgba(22, 24, 35, 0.2);
+    }
+
+    .clear-btn,
+    .loading {
+      position: absolute;
+      top: 50%;
+      right: calc(var(--search-btn-width) + 16px);
+      transform: translateY(-50%);
+      color: rgba(22, 24, 35, 0.34);
+    }
+
+    .search-btn {
+      width: var(--search-btn-width);
+      height: 100%;
+      border-top-right-radius: var(--search-border-radius);
+      border-bottom-right-radius: var(--search-border-radius);
+      font-size: 1.8rem;
+      color: rgba(22, 24, 35, 0.36);
+
+      &:hover {
+        cursor: pointer;
+        color: rgba(22, 24, 35, 0.75);
+        background-color: rgba(22, 24, 35, 0.03);
+      }
+    }
+  }
+
+  .action {
+    .more-btn {
+      margin-left: 28px;
+      padding: 4px 8px;
+      font-size: 2rem;
+      background-color: transparent;
+    }
+  }
+}
