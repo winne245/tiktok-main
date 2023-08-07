@@ -1,31 +1,28 @@
-import { Fragment } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { publicRoutes } from '~/routes';
-import { DefaultLayout } from '~/components/Layout';
+import { useState } from 'react';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import SuggestionResult from './components/SuggestionResult';
 
 function App() {
+  const [searchValue, setSearchValue] = useState('');
+
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          {publicRoutes.map((route, index) => {
-            const Page = route.component;
-            const Layout = route.layout ? route.layout : route.layout === null ? Fragment : DefaultLayout;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <Layout>
-                    <Page />
-                  </Layout>
-                }
-              />
-            );
-          })}
-        </Routes>
-      </div>
-    </Router>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h4" noWrap component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+            Boost Commerce
+          </Typography>
+          <SuggestionResult searchValue={searchValue}>
+            <input
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+              }}
+              placeholder="Search"
+            />
+          </SuggestionResult>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 }
 
