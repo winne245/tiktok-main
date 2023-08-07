@@ -8,6 +8,7 @@ function Button({
   to,
   href,
   primary = false,
+  secondary = false,
   outline = false,
   text = false,
   rounded = false,
@@ -43,7 +44,7 @@ function Button({
     Comp = 'a';
   }
 
-  const classes = cx('wrapper', className, { primary, outline, text, rounded, disable, [size]: size });
+  const classes = cx('wrapper', className, { primary, secondary, outline, text, rounded, disable, [size]: size });
 
   return (
     <Comp className={classes} {...props}>

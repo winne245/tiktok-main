@@ -56,6 +56,14 @@
   }
 }
 
+.secondary {
+  border: 1px solid rgba(22, 24, 35, 0.12);
+
+  &:hover {
+    border-color: 1px solid rgba(22, 24, 35, 0.12);
+    background: rgba(22, 24, 35, 0.03);
+  }
+}
 .outline {
   color: var(--primary);
   border-color: currentColor;
