@@ -41,7 +41,8 @@ function Search() {
   }, [debounceSearchValue]);
 
   const handleChangeSearch = (e) => {
-    setSearchValue(e.target.value);
+    const searchValue = e.target.value;
+    if (!searchValue.startsWith(' ')) setSearchValue(searchValue);
   };
 
   const handleClearResult = () => {
@@ -86,7 +87,7 @@ function Search() {
         )}
 
         {isLoading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-        <button className={cx('search-btn')}>
+        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
       </div>
