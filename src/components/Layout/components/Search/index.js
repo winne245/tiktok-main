@@ -56,42 +56,45 @@ function Search() {
   };
 
   return (
-    <Tippy
-      visible={searchResult.length > 0 && isShowResult}
-      interactive={true}
-      render={(attrs) => (
-        <div className={cx('search-result')} tabIndex={-1} {...attrs}>
-          <PopperWrapper>
-            <h4 className={cx('search-title')}>Accounts</h4>
-            {searchResult.map((result) => (
-              <AccountItem key={result.id} data={result} />
-            ))}
-          </PopperWrapper>
-        </div>
-      )}
-      onClickOutside={handleHideResult}
-    >
-      <div className={cx('search')}>
-        <input
-          ref={inputRef}
-          value={searchValue}
-          placeholder="Search accounts and videos"
-          spellCheck={false}
-          onChange={handleChangeSearch}
-          onFocus={() => setIsShowResult(true)}
-        />
-        {!!searchValue && !isLoading && (
-          <button className={cx('clear-btn')} onClick={handleClearResult}>
-            <FontAwesomeIcon icon={faCircleXmark} />
-          </button>
+    // Using a wrapper <div> around the reference element solves Tippy warning by creating a new parentNode context.
+    <div>
+      <Tippy
+        visible={searchResult.length > 0 && isShowResult}
+        interactive={true}
+        render={(attrs) => (
+          <div className={cx('search-result')} tabIndex={-1} {...attrs}>
+            <PopperWrapper>
+              <h4 className={cx('search-title')}>Accounts</h4>
+              {searchResult.map((result) => (
+                <AccountItem key={result.id} data={result} />
+              ))}
+            </PopperWrapper>
+          </div>
         )}
+        onClickOutside={handleHideResult}
+      >
+        <div className={cx('search')}>
+          <input
+            ref={inputRef}
+            value={searchValue}
+            placeholder="Search accounts and videos"
+            spellCheck={false}
+            onChange={handleChangeSearch}
+            onFocus={() => setIsShowResult(true)}
+          />
+          {!!searchValue && !isLoading && (
+            <button className={cx('clear-btn')} onClick={handleClearResult}>
+              <FontAwesomeIcon icon={faCircleXmark} />
+            </button>
+          )}
 
-        {isLoading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-        <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
-      </div>
-    </Tippy>
+          {isLoading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+          <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+        </div>
+      </Tippy>
+    </div>
   );
 }
 

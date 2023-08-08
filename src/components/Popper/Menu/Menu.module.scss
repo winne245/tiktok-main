@@ -4,6 +4,10 @@
   .menu-inner {
     padding-bottom: 8px;
 
+    .menu-body {
+      overflow-y: auto;
+    }
+
     .menu-item {
       display: flex;
       justify-content: flex-start;
@@ -26,6 +30,7 @@
 //Header
 .header {
   position: relative;
+  flex-shrink: 0;
   height: 50px;
   margin-top: -8px;
 }

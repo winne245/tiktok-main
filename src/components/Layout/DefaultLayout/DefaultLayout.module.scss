@@ -4,7 +4,7 @@
 
   .container {
     display: flex;
-    min-height: 1000px;
+    margin-top: var(--default-layout-header-hight);
     padding: 0 var(--default-layout-horizontal-spacer);
 
     .content {
