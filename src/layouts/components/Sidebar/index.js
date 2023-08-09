@@ -1,9 +1,10 @@
 import classNames from 'classnames/bind';
+import { HomeIcon, PeopleIcon, LiveIcon, HomeActiveIcon, PeopleActiveIcon, LiveActiveIcon } from '~/components/Icons';
 import config from '~/config';
+import AccountList from '~/components/AccountList';
 import styles from './Sidebar.module.scss';
 import Menu from './Menu';
 import MenuItem from './Menu/MenuItem';
-import { HomeIcon, PeopleIcon, LiveIcon, HomeActiveIcon, PeopleActiveIcon, LiveActiveIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +21,7 @@ function Sidebar() {
         />
         <MenuItem title="Live" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
       </Menu>
+      <AccountList />
     </aside>
   );
 }
