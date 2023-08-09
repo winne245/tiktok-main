@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  width: 240px;
+  max-width: 100%;
+  min-height: 100%;
+  padding: 20px 0px 26px 8px;
+  box-sizing: border-box;
+}

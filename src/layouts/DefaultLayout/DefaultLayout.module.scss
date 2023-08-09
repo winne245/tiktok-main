@@ -4,8 +4,13 @@
 
   .container {
     display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    align-self: center;
+    flex: 1 1 auto;
+    width: 100vw;
+    max-width: 100%;
     margin-top: var(--default-layout-header-hight);
-    padding: 0 var(--default-layout-horizontal-spacer);
 
     .content {
       flex: 1;
