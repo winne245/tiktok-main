@@ -13,6 +13,22 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
   const [history, setHistory] = useState([{ data: items }]);
   const current = history[history.length - 1];
 
+  const renderResults = (attrs) => (
+    <div className={cx('menu')} tabIndex={-1} {...attrs}>
+      <PopperWrapper className={cx('menu-inner')}>
+        {history.length > 1 && (
+          <Header
+            title={current.title}
+            onBack={() => {
+              setHistory((pre) => pre.slice(0, pre.length - 1));
+            }}
+          />
+        )}
+        <div className={cx('menu-body')}>{renderItems()}</div>
+      </PopperWrapper>
+    </div>
+  );
+
   const renderItems = () => {
     return current.data.map((item, index) => {
       const isPatent = !!item.children;
@@ -33,6 +49,10 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
     });
   };
 
+  const handleResetMenu = () => {
+    setHistory((pre) => pre.slice(0, 1));
+  };
+
   return (
     <Tippy
       interactive
@@ -40,24 +60,8 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
       offset={[5, 10]}
       delay={[0, 700]}
       placement="bottom-end"
-      render={(attrs) => (
-        <div className={cx('menu')} tabIndex={-1} {...attrs}>
-          <PopperWrapper className={cx('menu-inner')}>
-            {history.length > 1 && (
-              <Header
-                title={current.title}
-                onBack={() => {
-                  setHistory((pre) => pre.slice(0, pre.length - 1));
-                }}
-              />
-            )}
-            <div className={cx('menu-body')}>{renderItems()}</div>
-          </PopperWrapper>
-        </div>
-      )}
-      onHide={() => {
-        setHistory((pre) => pre.slice(0, 1));
-      }}
+      render={renderResults}
+      onHide={handleResetMenu}
     >
       {children}
     </Tippy>
