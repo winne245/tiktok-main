@@ -7,7 +7,7 @@ import Tippy from '@tippyjs/react/headless';
 import { useDebounce } from '~/hooks';
 import * as searchServices from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountTime';
+import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
